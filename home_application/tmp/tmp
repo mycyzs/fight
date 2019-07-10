@@ -1,0 +1,10 @@
+git命令
+拉取代码
+git clone http://192.168.165.95/framework/angular-exam.git
+新增文件
+git add *
+提交代码
+git commit -m 'abc'
+推送代码
+git push
+

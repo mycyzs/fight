@@ -1,0 +1,12 @@
+<div style="width:100%;height: 100%;padding:10px;">
+    <div tabset>
+        <div ng-repeat="m in funModules" tab heading="{{m.moduleName}}" select="changeFunModule(m)">
+        </div>
+    </div>
+    <div ng-if="moduleIndex==1" style="width: 100%; height: 340px; padding: 10px;">
+        <div highcharts="linechart" style="width:100%;height: 400px;"></div>
+    </div>
+    <div ng-if="moduleIndex==2" style="width: 100%; height: 340px; padding: 10px;">
+        <div cw-piechart="piechart" style="width:100%;height: 400px;"></div>
+    </div>
+</div>

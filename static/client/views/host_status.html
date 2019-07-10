@@ -1,0 +1,29 @@
+<div style="width: 100%; height: 100%;padding: 5px">
+    <fieldset class="fieldsetName">
+        <legend style="">查询条件</legend>
+        <div class="container-fluid">
+
+
+            <div style="float:left;margin-left: 10px;">
+                <label style="float:left;margin-top: 5px;">业务：</label>
+                <input type="text" cw-selectstr2="bizOption" ng-change="biz_change()" ng-model="args.biz_id" style="width:150px;float:left;"
+                       class="" />
+            </div>
+            <div style="float:left;margin-left: 10px;">
+                <label style="float:left;margin-top: 5px;">主机：</label>
+                <input type="text" cw-selectstr2="hostOption" ng-change="host_change()" ng-model="args.host_ip" style="width:150px;float:left;"
+                       class="" />
+            </div>
+            <div style="float:left;margin-left: 10px;">
+                <button ng-click="push_into_book()" ng-if="need_poll == 1">加入周期</button>
+                <button ng-click="delete_from_book()" ng-if="need_poll == 0">移除主机</button>
+            </div>
+
+        </div>
+    </fieldset>
+
+    <div style="width: 100%; height: 340px; padding: 10px;">
+        <div highcharts="linechart" style="width:100%;height: 400px;"></div>
+    </div>
+
+</div>

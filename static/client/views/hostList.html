@@ -1,0 +1,28 @@
+<div style="height: 100%;width: 100%;padding:5px;position: relative;">
+    <div style="width:250px;height: 100%;position: relative;">
+        <input type="text" style="width:100%;" ng-model="args.app_id" ng-change="changeApp()"
+               cw-selectstr2t cwmultiple="false" selectdata="appList" selectid="args.app_id">
+        <div style="width:100%;position: absolute;top:40px;bottom: 0;">
+            <ul id="businessTopo" ztree="zTreeOptions" ng-model="businessTopo"
+                style="position: absolute;bottom:20px;left:10px;right: 10px;top:0;overflow-y: auto" class="ztree"></ul>
+        </div>
+    </div>
+    <div style="position:absolute;top:5px;bottom: 5px; right: 5px; left: 270px;">
+        <div style="width:100%;height: 40px;">
+            <select class="form-control" style="width:100px;float:left;" ng-model="select_attr.value" ng-options="i.id as i.text for i in attrList"></select>
+            <input class="form-control" style="width:200px;float:left;" ng-model="filterObj.value"/>
+            <button class="btn btn-sm btn-primary" style="float:right;" ng-click="filterServer()">查询</button>
+        </div>
+        <div style="position:absolute; top:50px;bottom: 0;left:0;right: 0;overflow-y: auto">
+            <!--<table class="table table-bordered" style="margin-bottom: 0; table-layout: fixed">-->
+            <!--<tr>-->
+            <!--<th ng-repeat="i in filterList|limitTo: 5" ng-bind="i.text"></th>-->
+            <!--</tr>-->
+            <!--<tr ng-click="openDetail(u)" ng-repeat="u in serverList">-->
+            <!--<td ng-repeat="i in filterList|limitTo: 5">{{ u[i.id] }}</td>-->
+            <!--</tr>-->
+            <!--</table>-->
+            <div ng-grid="gridOption" style="width:100%;height: 100%;"></div>
+        </div>
+    </div>
+</div>

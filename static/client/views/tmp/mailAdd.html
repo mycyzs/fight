@@ -1,0 +1,64 @@
+<div>
+    <div dragable dialog-title="{{ title }}"></div>
+    <div style="width: 100%;padding: 10px;">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">业务：</label>
+                <div class="col-sm-7">
+                    <input type="text" style="width:100%;" ng-model="args.app_id" ng-change="changeApp()"
+                           cw-selectstr2t cwmultiple="false" selectdata="appList" cwtext="args.app_name" selectid="args.app_id">
+                </div>
+                <span class="text-danger mt5 fl">*</span>
+            </div>
+            <!--<div class="form-group">-->
+            <!--&lt;!&ndash;Select2初始用法&ndash;&gt;-->
+            <!--<label class="col-sm-3 control-label">业务：</label>-->
+            <!--<div class="col-sm-7">-->
+            <!--<input type="text" style="width:100%;" ng-model="args.app_id" ng-change="changeApp()"-->
+            <!--cw-selectstr2="appOption">-->
+            <!--</div>-->
+            <!--<span class="text-danger mt5 fl">*</span>-->
+            <!--</div>-->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">服务器：</label>
+                <div class="col-sm-7">
+                    <input type="text" style="width:100%;"
+                           cw-selectstr2t cwmultiple="true" selectdata="serverList" cwtext="args.server_list" selectid="args.server_id" ng-model="args.server_id"
+                    >
+                </div>
+                <span class="text-danger mt5 fl">*</span>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">帐号：</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" ng-model="args.account" placeholder="请输入账号">
+                </div>
+                <span class="text-danger mt5 fl">*</span>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">邮箱：</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" ng-model="args.mailbox" placeholder="请输入邮箱">
+                </div>
+                <span class="text-danger mt5 fl">*</span>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">文件：</label>
+                <div class="col-sm-7">
+                    <input id="uploadFile" onchange="angular.element(this).scope().upload_img()"
+                           name="uploadFile" type="file"/>
+                    <!--<button class="btn new-button-two"-->
+                            <!--onclick="document.getElementById('uploadFile').value = ''; document.getElementById('uploadFile').click();">-->
+                        <!--选择文件-->
+                    <!--</button>&emsp;&emsp;-->
+                </div>
+                <span class="text-danger mt5 fl">*</span>
+            </div>
+        </div>
+        <div style="width:100%;margin-top: 10px;text-align: center">
+            <button ng-click="downloadTemp()" class="btn new-button">下载模板</button>&emsp;
+            <button ng-click="confirm()" class="btn new-button">确认</button>&emsp;
+            <button ng-click="cancel()" class="btn new-button-cancel">取消</button>
+        </div>
+    </div>
+</div>

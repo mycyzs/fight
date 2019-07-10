@@ -1,0 +1,16 @@
+<div>
+    <div dragable dialog-title="{{ title }}"></div>
+    <div style="width: 100%;padding: 10px;">
+        <div style="width:100%;height: 400px;overflow-y: auto;overflow-x: hidden">
+            <table class="table table-bordered" style="width:100%;margin:0;table-layout: fixed">
+                <tr ng-repeat="i in filterList">
+                    <th style="width:30%;">{{ i.text }}</th>
+                    <td>{{ hostObj[i.id] }}</td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:100%;margin-top: 10px;text-align: center">
+            <button ng-click="cancel()" class="btn new-button-cancel">返回</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>开发框架|蓝鲸智云企业版</title>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="${STATIC_URL}favicon.ico" type="image/x-icon">
+    <!-- bootstrap css -->
+    <link href="${STATIC_URL}assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 禁止bootstrap 响应式 （app根据自身需求启用或禁止bootstrap响应式） -->
+    <link href="${STATIC_URL}assets/bootstrap-3.3.4/css/bootstrap_noresponsive.css" rel="stylesheet">
+    <!--&lt;!&ndash;自定义css&ndash;&gt;-->
+    <!--<link href="${STATIC_URL}css/bk.css?v=${STATIC_VERSION}" rel="stylesheet">-->
+    <!--<link rel="stylesheet" type="text/css" href="${STATIC_URL}css/index.css?v=${STATIC_VERSION}">-->
+
+    <!--插件css-->
+    <link href="${STATIC_URL}css/ng-grid.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/jquery-ui-1.10.4.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/toastr.min.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/kendo-default.min.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/kendo-datetime.min.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/select2.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/zTreeStyle.css" rel="stylesheet">
+
+    <link href="${STATIC_URL}css/urabn-ui/font-awesome.min.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/urabn-ui/urban.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/urabn-ui/urban.skins.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/cw-ui/template.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/cw-ui/base-page.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/cw-ui/cw-left-menu.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/cw-ui/directive.css" rel="stylesheet">
+    <link href="${STATIC_URL}css/cw-ui/cw-top-menu.css" rel="stylesheet">
+
+    <!-- 这个是全局配置，如果需要在js中使用app_id和site_url,则这个javascript片段一定要保留 -->
+    <script type="text/javascript">
+        var app_id = "${APP_ID}";
+        var site_url = "${SITE_URL}";	  // app的url前缀,在ajax调用的时候，应该加上该前缀
+        var static_url = "${STATIC_URL}"; // 静态资源前缀
+    </script>
+</head>
+
+<body ng-controller="site" class="siteBody">
+<input type='hidden' id="csrf" name='csrfmiddlewaretoken' value='${csrf_token}'>
+
+<!--顶部导航 Start-->
+<div>
+    <nav class="navbar navbar-default king-horizontal-nav2 top-nav" role="navigation">
+        <div class="container">
+            <div class="navbar-header logo">
+                <a class="navbar-brand logo-href" href="/">
+                    开发框架
+                </a>
+            </div>
+            <div ng-if="!isShowLeft" id="cwTopMenu" cw-top-menu="menuOption"></div>
+            <!--登陆注销start-->
+            <div style="position:absolute;right:0;top:0;overflow:auto;color: #ccc;width:190px;">
+                <img src="${STATIC_URL}img/getheadimg.jpg" class="nav-user-photo" style="width:45px;height:45px;border:1px solid #ddd;">
+                <span class="user-info" style="color: #333">${request.user.username}</span>
+                <div class="log_out">
+                    <a style="margin: 18px 0 0 13px" class="fa fa-sign-out fa-2x" href="${LOGOUT_URL}"></a>
+                </div>
+            </div>
+            <!--登陆注销end-->
+        </div>
+    </nav>
+</div>
+<!-- 固定宽度居中 start -->
+<div ng-if="isShowLeft" class="main-container">
+    <div cw-left-menu="menuOption"></div>
+    <div class="main-content" id="main-content" style="position:absolute;left:17%;top:0;bottom: 0;width: 83%; overflow: hidden;margin-left: 0">
+        <div id="top_nav2">
+            <div id="locationPlaceHolder" style="font-size: 12px; color: #333;">
+            </div>
+        </div>
+        <div class="ui-content-main" ui-view
+             style="padding:0;width:100%; position: absolute;top:35px;bottom: 0;overflow-y: hidden;height: auto !important;">
+        </div>
+    </div>
+</div>
+<div ng-if="!isShowLeft" class="main-container">
+    <div class="main-content" id="main-content" style="position:absolute;left:0;top:0;bottom: 0;width: 100%; overflow: hidden;margin-left: 0">
+        <div class="ui-content-main" ui-view
+             style="padding:0;width:100%; position: absolute;top:0;bottom: 0;overflow-y: hidden;height: auto !important;">
+        </div>
+    </div>
+</div>
+<!-- 尾部声明 start -->
+<!-- jquery js  -->
+<script src="${STATIC_URL}js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/jquery.json-2.3.min.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/jquery-ui-1.10.4.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/kendo.all.min.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/select2.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/jquery-form.js" type="text/javascript"></script>
+<!-- bootstrap js  -->
+<script src="${STATIC_URL}assets/bootstrap-3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+<!--配置js  勿删-->
+<script src="${STATIC_URL}js/settings.js?v=${STATIC_VERSION}" type="text/javascript"></script>
+<script src="${STATIC_URL}js/toastr.min.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+
+<!--angular js-->
+<script src="${STATIC_URL}js/angular_base/angular.min.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/angular_base/angular-resource.min.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/angular_base/ui-bootstrap-tpls-0.12.0.js" type="text/javascript"></script>
+<script src="${STATIC_URL}js/angular_base/angular-ui-router.min.js" type="text/javascript"></script>
+<!--表格控件-->
+<script src="${STATIC_URL}js/angular_base/ng-grid.js" type="text/javascript"></script>
+
+<!--左侧菜单js-->
+<script src="${STATIC_URL}js/angular_base/leftmenu.js" type="text/javascript"></script>
+
+<script src="${STATIC_URL}client/init.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/Services.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/Directives.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/Utilities_Services.js" type="text/javascript"></script>
+<!--自定义配置功能-->
+<script src="${STATIC_URL}client/controllers/Config.js" type="text/javascript"></script>
+
+<!--确认提示框-->
+<script src="${STATIC_URL}client/controllers/Confirm.js" type="text/javascript"></script>
+
+<!--错误提示框-->
+<script src="${STATIC_URL}client/controllers/Error.js" type="text/javascript"></script>
+
+
+<!--添加自定义js文件-->
+<script src="${STATIC_URL}client/controllers/addSys.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/modifySys.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/host_detail.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/chartList.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/hostList.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/serverDetail.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/body.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/up_file.js" type="text/javascript"></script>
+<script src="${STATIC_URL}client/controllers/host_status.js" type="text/javascript"></script>
+
+
+
+
+<!-- app使用数据统计上报脚本 -->
+<!--script src="${BK_PLAT_HOST}/console/static/js/analysis.min.js?v=${STATIC_VERSION}" type="text/javascript"></script-->
+${self.body()}
+<!-- 兼容性设置 -->
+<!--[if lt IE 6]>\xe8\x93\x9d\xe9\xb2\xb8\xe6\x99\xba\xe8\x90\xa5\x20\xe7\x89\x88\xe6\x9d\x83\xe6\x89\x80\xe6\x9c\x89<![endif]-->
+</body>
+</html>

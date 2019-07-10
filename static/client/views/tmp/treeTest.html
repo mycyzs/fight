@@ -1,0 +1,21 @@
+<div style="width:100%;height: 100%;overflow: hidden">
+    <div style="width:25%;height: 100%;position: relative;float:left;">
+        <!--如果没有搜索条，可以把这个div去掉，并将ul上方style的top:40px改为0-->
+        <div style="height: 30px;width:100%;">
+            <label class="col-sm-4 control-label">服务器：</label>
+            <div class="col-sm-7">
+                <input class="form-control" ng-model="args.name"/>
+            </div>
+        </div>
+        <!--就是改这里的top-->
+        <div style="width:100%;position: absolute;top:40px;bottom: 0;">
+            <!--id是必须的，为了适配一个页面有多颗树形拓扑的情况
+            注意id是唯一的，如果这个页面有弹窗，要注意弹窗里面的id也不能外面的相同-->
+            <ul id="abc" ztree="zTreeOptions" ng-model="topoList"
+                style="position: absolute;bottom:20px;left:10px;right: 10px;top:0;overflow-y: auto" class="ztree"></ul>
+        </div>
+    </div>
+    <div style="width: 75%;height: 100%;float:left;">
+        <!--此处写右方列表展示-->
+    </div>
+</div>
